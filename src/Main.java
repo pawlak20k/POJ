@@ -2,6 +2,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Main {
     private JFrame frame;
@@ -20,7 +25,39 @@ public class Main {
     private JLabel labelAutor;
     //[opis programu] private JLabel labelOpisProgramu;
     private JTable tableBMI;
+    private static Random random = new Random();
+    private void zapiszDoPliku(String zawartosc) {
+        try {
+            //tworzenie obiektu daty i formatowanie
+            Date data = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dataSformatowana = format.format(data);
 
+            //id, data, zawartosc
+            String tekstZDanymi = "[ID: " + generujID() + "][" + dataSformatowana + "]" + zawartosc + "\n";
+
+            FileWriter writer = new FileWriter("wyniki.txt", true); //true=tryb dopisywania
+            writer.write(tekstZDanymi);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String generujID() {
+        String id = generateRandomID();
+        return id;
+    }
+
+    private String generateRandomID() {
+        StringBuilder sb = new StringBuilder();
+        int length = 6; //zdefiniowanie dlugosci ID (liczba cyfr)
+        for (int i = 0; i < length; i++) {
+            int digit = random.nextInt(10); //losowa cyfra (0-9)
+            sb.append(digit);
+        }
+        return sb.toString();
+    }
     public static void main(String[] args) {
         Main kalkulator = new Main();
         kalkulator.inicjalizujGUI();
@@ -145,6 +182,7 @@ public class Main {
                         String kategoria = okreslKategorie(bmi);
 
                         labelWynikBMI.setText(String.format("BMI: %.2f (%s)", bmi, kategoria));
+                        zapiszDoPliku(String.format("[BMI: %.2f (%s]", bmi, kategoria + ") Waga: " + waga + " Wzrost: " + wzrost)); //zapis do pliku
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(frame, "Wprowadzono nieprawidłowe dane.", "Błąd", JOptionPane.ERROR_MESSAGE);
                     }
@@ -166,6 +204,7 @@ public class Main {
                         double zapotrzebowanieKaloryczne = obliczZapotrzebowanieKaloryczne(wiek, plec, aktywnosc);
 
                         labelWynikKalorie.setText(String.format("Zapotrzebowanie: %.2f kcal", zapotrzebowanieKaloryczne));
+                        zapiszDoPliku(String.format("[Zapotrzebowanie kaloryczne: %.2f kcal, ", zapotrzebowanieKaloryczne) + aktywnosc + ", Wiek: " + wiek + "]"); //zapis do pliku
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(frame, "Wprowadzono nieprawidłowe dane.", "Błąd", JOptionPane.ERROR_MESSAGE);
                     }
