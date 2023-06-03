@@ -153,7 +153,7 @@ public class Main {
         ImageIcon logo = new ImageIcon("pjatk.png");
         JLabel labelLogo = new JLabel(logo);
         labelLogo.setHorizontalAlignment(SwingConstants.CENTER);
-        JLabel labelWersja = new JLabel("Wersja aplikacji: 1.0");
+        JLabel labelWersja = new JLabel("Wersja aplikacji: 1.1");
         labelWersja.setHorizontalAlignment(SwingConstants.CENTER);
         logoPanel.add(labelLogo, BorderLayout.CENTER);
         logoPanel.add(labelWersja, BorderLayout.SOUTH);
