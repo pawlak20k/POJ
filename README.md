@@ -6,8 +6,8 @@ Aktualna wersja: v1.1
 # Wersja v1.1
 - dodanie zapisywanie zawartości do pliku "wyniki.txt" (w formie logów)
 - format jaki obowiązuje (przykład):
-[ID: 763664][2023-06-03 15:33:03][BMI: 22,31 (Prawidłowa) Waga: 78.0 Wzrost: 187.0]
-[ID: 282497][2023-06-03 15:33:07][Zapotrzebowanie kaloryczne: 2270,77 kcal, Średnia aktywność, Wiek: 67]
+a) [ID: 763664][2023-06-03 15:33:03][BMI: 22,31 (Prawidłowa) Waga: 78.0 Wzrost: 187.0]
+b) [ID: 282497][2023-06-03 15:33:07][Zapotrzebowanie kaloryczne: 2270,77 kcal, Średnia aktywność, Wiek: 67]
 - informacje są zapisywane z dwóch zakładek: Kalkulator BMI, Kalkulator Kalorii
 
 # Wersja: v1.0
