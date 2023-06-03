@@ -161,7 +161,7 @@ public class Main {
         panelOProgramie.add(logoPanel, BorderLayout.NORTH);
         panelOProgramie.add(labelAutor, BorderLayout.CENTER);
         //[opis programu] panelOProgramie.add(labelOpisProgramu, BorderLayout.SOUTH);
-        //gorne zakladki
+        //gorne zakladki programu
         tabbedPane.addTab("Kalkulator BMI", panelBMI);
         tabbedPane.addTab("Kalkulator Kalorii", panelKalorie);
         tabbedPane.addTab("O programie", panelOProgramie);
